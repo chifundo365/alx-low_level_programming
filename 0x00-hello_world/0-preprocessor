@@ -1,2 +1,2 @@
-#!/bin/bash
-betty main.c > CFILE
+#!/bin/bashi
+betty main.c > c
