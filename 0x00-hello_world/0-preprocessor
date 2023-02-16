@@ -1,2 +1,2 @@
 #!/bin/bashi
-gcc CFILE -o c
+gcc $CFILE -o ./c
