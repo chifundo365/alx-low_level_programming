@@ -1,2 +1,2 @@
 #!/bin/bashi
-betty main.c > c
+gcc CFILE -o c
