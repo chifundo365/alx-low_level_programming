@@ -1,1 +1,1 @@
-This repository contains c programming language script code
+This repository contains c programming language script project  code 
