@@ -1,4 +1,4 @@
-#include "mai.h"
+#include "main.h"
 
 /**
 *int _isupper(int c): checks if numbers is uppercase
