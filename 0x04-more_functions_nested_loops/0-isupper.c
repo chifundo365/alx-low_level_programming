@@ -1,20 +1,14 @@
-#include "main.h"
-#include <stdio.h> 
+#include "holberton.h"
 
 /**
-*int _isupper(int c): checks if numbers is uppercase
-*main: entry file
-*Return: Always 0
-*/
-
+ * _isupper - function that checks for uppercase characters
+ * @c: int type number
+ * Return: 1 if uppercase, else 0
+ */
 int _isupper(int c)
 {
-if (isupper(c))
-{
-return (1);
-}
-else
-{
-return (0);
-}
+	if (c > 64 && c < 91)
+		return (1);
+
+	return (0);
 }
