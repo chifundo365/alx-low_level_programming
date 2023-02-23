@@ -8,5 +8,5 @@
 
 int _isupper(int c)
 {
-return isupper(int c);
+return (isupper(int c));
 }
