@@ -8,5 +8,12 @@
 
 int _isupper(int c)
 {
-return (isupper(int c));
+if (isupper(int c))
+{
+return (1);
+}
+else
+{
+return (0);
+}
 }
