@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "main"
+#include "mai.h"
 
 /**
 *int _isupper(int c): checks if numbers is uppercase
@@ -9,5 +8,5 @@
 
 int _isupper(int c)
 {
-return _isupper(int c);
+return isupper(int c);
 }
