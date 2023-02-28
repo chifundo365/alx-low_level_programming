@@ -7,7 +7,6 @@
 
 void print_rev(char *s)
 {
-int length;
 int i;
 
 while (s[i])
@@ -20,6 +19,6 @@ while (i--)
 _putchar(s[i]);
 }
 
-_printf('\n');
+_putchar('\n');
 }
 
