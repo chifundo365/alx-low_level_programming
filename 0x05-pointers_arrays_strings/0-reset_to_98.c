@@ -1,8 +1,8 @@
 #include "main.h"
+
 /**
-* Description: a  function that updates the parameter n to 98
-* reset_to_98 - set pointer parameter ro  98.
-* @n : a pointer parameter
+* reset_to_98 - Set pointer param to 98.
+* @n: int type pointer
 */
 void reset_to_98(int *n)
 {
