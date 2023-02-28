@@ -11,7 +11,7 @@ void _puts(char *str)
 int i;
 while (str[i] != '\0')
 {
-putchar(str[i]);
+write(STDOUT_FILENO, str[i], 1);
 i++;
 }
 }
