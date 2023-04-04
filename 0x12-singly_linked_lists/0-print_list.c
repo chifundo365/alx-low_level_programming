@@ -19,10 +19,12 @@ while (h != NULL)
 if(h->str != NULL)
 {
 printf("[%i] %s\n", h->len, h->str);
-} 
+}
+else
+{printf("[0](nil)");}
 
-h = h->next;
 i++;
+h = h->next;
 
 } 
 return (i);
