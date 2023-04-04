@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "lists.h"
 /**
-*print_list - print elements of a list_t list
-*@h: the first node
-*Return:number of nodes
+* print_list - print elements of a list_t list
+* @h: the first node
+* Return:number of nodes
 */
 
 size_t print_list(const list_t *h)
@@ -12,7 +12,7 @@ size_t print_list(const list_t *h)
 int i = 0;
 if (h == NULL)
 {
-return();
+return(0);
 }
 while (h != NULL)
 {
