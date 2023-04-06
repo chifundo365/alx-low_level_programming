@@ -15,15 +15,17 @@ listint_t *lastNode;
 listint_t *temp = *head;
 lastNode = (listint_t *)malloc(sizeof(listint_t));
 
-if (lastNode == NULL) return NULL;
+if (lastNode == NULL)
+{return (NULL);
+}
 
 lastNode->n = n;
 lastNode->next = NULL;
 
-while(*head == NULL)
+while (*head == NULL)
 {
 *head = lastNode;
-return(lastNode);
+return (lastNode);
 }
 
 while (temp->next != NULL)
@@ -32,5 +34,5 @@ temp = temp->next;
 }
 temp->next = lastNode;
 
-return lastNode;
+return (lastNode);
 }
