@@ -18,5 +18,5 @@ free(temp);
 }
 
 *head = NULL;
-
+temp = NULL;
 }
