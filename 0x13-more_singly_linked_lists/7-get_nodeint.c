@@ -19,10 +19,11 @@ if (head == NULL)
 return (NULL);
 }
 
-while (head != NULL)
+temp = head;
+
+while (temp != NULL)
 {
-temp  = head;
-head = head->next;
+temp = temp->next;
 current++;
 if (index == current)
 {
