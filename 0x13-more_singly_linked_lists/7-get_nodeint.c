@@ -25,15 +25,10 @@ head = head->next;
 current++;
 if (index == current)
 {
-break;
+return temp;
 }
 
 }
 
-if (temp == NULL)
-{
 return (NULL);
-}
-
-return (temp);
 }
