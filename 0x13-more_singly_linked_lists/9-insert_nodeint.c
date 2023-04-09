@@ -17,7 +17,7 @@ listint_t *newNode = (listint_t *)malloc(sizeof(listint_t));
 newNode->n = n;
 newNode->next = NULL;
 
-if (*head == NULL)
+if (head == NULL)
 { return (NULL); }
 
 if (idx == 0)
@@ -32,6 +32,13 @@ for (i = 0; i < idx - 1; i++)
 {
 temp = temp->next;
 }
+
+if (i != idx)
+{
+free(newNode);
+return (NULL);
+}
+
 newNode->next = temp->next;
 temp->next = newNode;
 
