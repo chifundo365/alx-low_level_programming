@@ -14,22 +14,13 @@ listint_t *newNode, *prevNode, *currentNode;
 unsigned int i;
 
 if (head == NULL)
-{
-return (NULL);
-}
+{ return (NULL); }
 
 newNode = (listint_t *)malloc(sizeof(listint_t *));
 if (newNode == NULL)
-{
-return (NULL);
-}
+{ return (NULL); }
 newNode->n = n;
-if (idx == 0)
-{
-newNode->next = *head;
-*head = newNode;
-return (newNode);
-}
+
 prevNode = NULL;
 currentNode = *head;
 
@@ -38,13 +29,14 @@ for (i = 0; i < idx && currentNode != NULL; i++)
 prevNode = currentNode;
 currentNode = currentNode->next;
 }
+
 if (i != idx)
 {
 free(newNode);
 return (NULL);
 }
 
-newNode->next  = currentNode;
+newNode->next = currentNode;
 prevNode->next = newNode;
 
 return (newNode);
