@@ -21,7 +21,7 @@ if (newNode == NULL)
 { return (NULL); }
 newNode->n = n;
 
-if (idx = 0)
+if (idx == 0)
 {
 newNode->next = *head;
 *head = newNode;
