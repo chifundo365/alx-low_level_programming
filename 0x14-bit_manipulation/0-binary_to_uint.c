@@ -1,4 +1,26 @@
 #include "main.h"
+#include <stdio.h>
+
+/**
+ * _strlen - finds the length of a string
+ * @str - pointer to the string
+ * Return: integer
+ * Description: finds the length of a null terminated string
+ */
+
+unsigned int _strlen(const char *str)
+{
+	unsigned int len = 0;
+
+	while (*str != '\0')
+	{
+		len++;
+		str++;
+	}
+
+	return (len);
+}
+
 
 /**
  * binary_to_uint - converts a binary string to unsigned int
@@ -10,24 +32,33 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int number = 0;
+	unsigned int position_value = 0;
 	unsigned int power = 0;
+	unsigned int strlen = 0;
 
-	while (*b != '\0')
+	
+	if (b != NULL)
 	{
-		if ((*b != '1') || (*b != '0'))
-		{
-			return (0);
-		}
-		else
-		{
-			if (*b == '1')
-			{
-				number += << power;
-			}
-		}
+		strlen = (_strlen(b));
 
-		power++;
-		b++;
+		while (strlen > 0)
+		{
+			if ((b[strlen - 1] == '1') || (b[strlen - 1] == '0'))
+			{
+				if (b[strlen - 1] == '1')
+				{
+					position_value = 1 << power;
+					number += position_value;
+				}
+			}
+			else
+			{
+				return (0);
+			}
+
+			strlen--;
+			power++;
+		}
 	}
 
 	return (number);
