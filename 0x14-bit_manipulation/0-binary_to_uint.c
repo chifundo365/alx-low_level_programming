@@ -3,7 +3,7 @@
 
 /**
  * _strlen - finds the length of a string
- * @str - pointer to the string
+ * @str: pointer to the string
  * Return: integer
  * Description: finds the length of a null terminated string
  */
@@ -36,7 +36,6 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int power = 0;
 	unsigned int strlen = 0;
 
-	
 	if (b != NULL)
 	{
 		strlen = (_strlen(b));
