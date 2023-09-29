@@ -17,12 +17,12 @@ void print_binary(unsigned long int n)
 
 		if (n & mask)
 		{
-			_putchar("1");
+			_putchar('1');
 			zero_flag = 0;
 		}
 		else if (zero_flag == 0)
 		{
-			_putchar("0");
+			_putchar('0');
 		}
 
 
@@ -31,7 +31,7 @@ void print_binary(unsigned long int n)
 
 	if (zero_flag == 1)
 	{
-		_putchar("0");
+		_putchar('0');
 	}
 }
 
