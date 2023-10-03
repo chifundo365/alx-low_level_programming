@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -15,15 +16,20 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t read_bytes = 0;
 	int fd;
-	char buffer[letters + 1]
+	char *buffer = malloc(letters + 1);
 
-
-	if (filename == NULL || letters < 1)
+	if (buffer == NULL)
 	{
 		return (0);
 	}
 
-	fd = open(*filename, O_RDONLY);
+
+	if (filename == NULL)
+	{
+		return (0);
+	}
+
+	fd = open(filename, O_RDONLY);
 
 	if (fd > -1)
 	{
@@ -31,23 +37,25 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 		if (read_bytes == -1)
 		{
-			fclose(fd);
+			close(fd);
 
 			return (0);
 		}
 
-		ready_bytes[letters] = '\0';
+		buffer[letters] = '\0';
 
 		write(STDOUT_FILENO, buffer, letters);
 
-		fclose(fd);
+		close(fd);
 	}
 	else
 	{
+		close(fd);
 		return (0);
 
 	}
 
 
+	return (read_bytes);
 
 }
