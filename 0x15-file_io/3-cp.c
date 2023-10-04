@@ -22,7 +22,7 @@ int copy_to(char *file_from, char *file_to)
 	mode_t mode = 0664;
 
 	fd1 = open(file_from, O_RDONLY); /* file to read from */
-	fd2 = open(file_to, O_WRONLY);
+	fd2 = open(file_to, O_WRONLY | O_TRUNC);
 	if (fd1 == -1)
 	{	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
