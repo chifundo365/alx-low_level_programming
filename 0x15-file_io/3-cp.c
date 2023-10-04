@@ -28,7 +28,7 @@ int copy_to(char *file_from, char *file_to)
 		exit(98);
 	}
 	if (fd2 == -1)
-	{	fd2 = open(file_to, O_WRONLY | O_CREAT |O_EXCL,  mode);
+	{	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL,  mode);
 		if (fd2 == -1)
 		{	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
