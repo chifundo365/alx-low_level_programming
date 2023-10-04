@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <stdlib.h>
 #include "main.h"
 
@@ -19,7 +20,7 @@ int copy_to(char *file_from, char *file_to)
 	int fd2 = 0;
 	int read_bytes  = 0;
 	char buffer[1024];
-	mode_t mode = 0664;
+	mode_t old_umask = umask(0);
 
 	fd1 = open(file_from, O_RDONLY); /* file to read from */
 	fd2 = open(file_to, O_WRONLY | O_TRUNC);
@@ -28,11 +29,12 @@ int copy_to(char *file_from, char *file_to)
 		exit(98);
 	}
 	if (fd2 == -1)
-	{	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL,  mode);
+	{	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL,  0664);
 		if (fd2 == -1)
 		{	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
+		umask(old_umask);
 	}
 	do {
 		read_bytes = read(fd1, buffer, sizeof(buffer));
