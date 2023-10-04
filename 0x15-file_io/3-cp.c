@@ -65,13 +65,17 @@ int copy_to(char *file_from, char *file_to)
 
 int main(int ac, char **av)
 {
-	if (ac != 2)
+	if (ac != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
 
-	copy_to(av[1], av[2]);
+	if (av[1] && av[2])
+	{
+		copy_to(av[1], av[2]);
+
+	}
 
 	return (0);
 }
