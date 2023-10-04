@@ -28,7 +28,7 @@ int copy_to(char *file_from, char *file_to)
 		exit(98);
 	}
 	if (fd2 == -1)
-	{	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL,  mode);
+	{	fd2 = open(file_to, O_WRONLY | O_CREAT |O_EXCL,  mode);
 		if (fd2 == -1)
 		{	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
@@ -49,7 +49,7 @@ int copy_to(char *file_from, char *file_to)
 	{	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 		exit(100);
 	}
-	if (!close(fd2) != 0)
+	if (close(fd2) != 0)
 	{	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
@@ -71,7 +71,7 @@ int main(int ac, char **av)
 		exit(97);
 	}
 
-	if (av[1] && av[2])
+	if (av[1] != NULL && av[2] != NULL)
 	{
 		copy_to(av[1], av[2]);
 
