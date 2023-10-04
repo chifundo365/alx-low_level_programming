@@ -21,10 +21,10 @@ int copy_to(char *file_from, char *file_to)
 	char buffer[1024];
 
 	fd1 = open(file_from, O_RDONLY); /* file to read from */
-	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0664);
+	fd2 = open(file_to, O_WRONLY | O_CREAT | O_EXCL, 0664);
 	if (fd1 == -1)
 	{	dprintf(STDERR_FILENO, "Error: Can't read from file %s", file_from);
-		exit(97);
+		exit(98);
 	}
 	if (fd2 == -1)
 	{	dprintf(STDERR_FILENO, "Error: Can't write to %s", file_to);
@@ -35,7 +35,7 @@ int copy_to(char *file_from, char *file_to)
 		if (read_bytes == 0)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s", file_from);
-			exit(97);
+			exit(98);
 		}
 		if (write(fd2, buffer,  read_bytes) == 0)
 		{
