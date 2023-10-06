@@ -17,7 +17,10 @@ void close_fd(int fd)
 	int result = 0;
 
 
-	result = close(fd);
+	if (fd != -1)
+	{
+		result = close(fd);
+	}
 
 	if (result != 0)
 	{
@@ -37,7 +40,7 @@ void close_fd(int fd)
 int create_file_to(char *file_to)
 {
 	int fd = open(file_to, O_WRONLY | O_EXCL | O_TRUNC);
-	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	mode_t permissions = 0664;
 
 	if (fd == -1)
 	{
