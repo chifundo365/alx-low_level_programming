@@ -41,6 +41,7 @@ int create_file_to(char *file_to)
 {
 	int fd = open(file_to, O_WRONLY | O_EXCL | O_TRUNC);
 	mode_t permissions = 0664;
+	int status = 0;
 
 	if (fd == -1)
 	{
@@ -52,6 +53,16 @@ int create_file_to(char *file_to)
 			close_fd(fd);
 			exit(99);
 		}
+
+		status = chmod(file_to, permissions);
+
+		if (status == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			close_fd(fd);
+			exit(99);
+		}
+
 	}
 
 	return (fd);
@@ -64,7 +75,7 @@ int create_file_to(char *file_to)
  * Description: open a file for reading and writes to the apppropriate file.
  */
 
-void read_write(char *file_from, int fd_file_to)
+void read_write(char *file_from, int fd_file_to, char *file_to)
 {	int fd_file_from = open(file_from, O_RDONLY);
 	char *buffer = malloc(sizeof(char) * 1024);
 	ssize_t read_length = 0;
@@ -96,11 +107,11 @@ void read_write(char *file_from, int fd_file_to)
 		}
 
 		if (write(fd_file_to, buffer, read_length) != read_length)
-		{	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		{	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close_fd(fd_file_from);
 			close_fd(fd_file_to);
 			free(buffer);
-			exit(98);
+			exit(99);
 		}
 	} while (read_length > 0);
 	close_fd(fd_file_from);
@@ -121,7 +132,7 @@ void copy_to(char *file_from, char *file_to)
 {
 	int fd_file_to = create_file_to(file_to);
 
-	read_write(file_from, fd_file_to);
+	read_write(file_from, fd_file_to, file_to);
 }
 
 /**
