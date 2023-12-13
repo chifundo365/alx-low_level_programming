@@ -2,7 +2,7 @@
 
 /**
  * free_dlistint - freez a d-linked list
- * head: pointer to the first node
+ * @head: pointer to the first node
  */
 void free_dlistint(dlistint_t *head)
 {
