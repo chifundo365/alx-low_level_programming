@@ -45,7 +45,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (new_node);
 	}
 
-	temp = *head;
+	temp = *h;
 
 	while (temp)
 	{
@@ -59,7 +59,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 			return (new_node);
 		}
 
-		tem = temp->next;
+		temp = temp->next;
 		x++;
 	}
 
