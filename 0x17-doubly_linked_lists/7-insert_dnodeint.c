@@ -27,17 +27,14 @@ dlistint_t *create_node(const int n)
  * Return: pointer to the new node
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
-{
-	dlistint_t *new_node = create_node(n);
-	dlistint_t *temp;
+{	dlistint_t *new_node = create_node(n);
+	dlistint_t *temp = *h;
 	unsigned int x = 0;
 
 	if (!new_node)
 		return (NULL);
-
 	if (idx == 0)
-	{
-		new_node->next = *h;
+	{	new_node->next = *h;
 		if (*h)
 			(*h)->prev = new_node;
 		*h = new_node;
@@ -45,13 +42,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (new_node);
 	}
 
-	temp = *h;
-
 	while (temp)
 	{
 		if (x == idx)
-		{
-			new_node->next = temp;
+		{	new_node->next = temp;
 			temp->prev->next = new_node;
 			new_node->prev = temp->prev;
 			temp->prev = new_node;
@@ -59,11 +53,19 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 			return (new_node);
 		}
 
-		temp = temp->next;
 		x++;
+
+		if (!temp->next)
+			break;
+		temp = temp->next;
 	}
 
-	free(new_node);
+	if (x == idx)
+	{	temp->next = new_node;
+		new_node->prev = temp;
 
+		return (new_node);
+	}
+	free(new_node);
 	return (NULL);
 }
