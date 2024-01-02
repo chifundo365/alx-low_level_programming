@@ -48,23 +48,23 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *current;
 	hash_node_t *node;
 
-	if (key == "" || !key)
+	if (strcmp(key, "") == 0 || !key)
 		return (0);
 
-	if (value == "" || !value)
+	if (strcmp(value, "") || !value)
 		return (0);
 
-	slot = key_index(key, ht->size);
+	slot = key_index((const unsigned char *)key, ht->size);
 	node = create_hash_node(key, value);
 
 	if (ht->array[slot])
 	{
-		current = ht->array[slow];
+		current = ht->array[slot];
 		node->next = current;
 		ht->array[slot] = node;
 	}
 	else
 		ht->array[slot] = node;
 
-	return (node);
+	return (1);
 }
