@@ -48,6 +48,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *current;
 	hash_node_t *node;
 
+	if (!ht)
+		return (0);
 	if (!*key)
 		return (0);
 
@@ -59,9 +61,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht->array[slot])
 	{
-		current = ht->array[slot];
-		node->next = current;
-		ht->array[slot] = node;
+		if (strcmp(ht->array[slot]->key, key) == 0)
+		{
+			strcpy(ht->array[slot]->value, value);
+		}
+		else
+		{
+			current = ht->array[slot];
+			node->next = current;
+			ht->array[slot] = node;
+		}
 	}
 	else
 		ht->array[slot] = node;
