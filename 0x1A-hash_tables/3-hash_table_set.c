@@ -48,10 +48,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *current;
 	hash_node_t *node;
 
-	if (strcmp(key, "") == 0 || !key)
+	if (!*key)
 		return (0);
 
-	if (strcmp(value, "") || !value)
+	if (!*value)
 		return (0);
 
 	slot = key_index((const unsigned char *)key, ht->size);
