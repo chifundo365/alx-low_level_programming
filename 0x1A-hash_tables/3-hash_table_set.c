@@ -63,7 +63,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(ht->array[slot]->key, key) == 0)
 		{
-			strcpy(ht->array[slot]->value, value);
+			free(ht->array[slot]->value);
+			ht->array[slot]->value = strdup(value);
+			free(node->key);
+			free(node->value);
+			free(node);
 		}
 		else
 		{
