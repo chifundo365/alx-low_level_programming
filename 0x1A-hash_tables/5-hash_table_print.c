@@ -22,16 +22,16 @@ void hash_table_print(const hash_table_t *ht)
 			if (current)
 			{
 				if (!found)
-					printf("'%s':'%s'", current->key, current->value);
+					printf("'%s': '%s'", current->key, current->value);
 				if (found)
-					printf(", '%s':'%s'", current->key, current->value);
+					printf(", '%s': '%s'", current->key, current->value);
 
 
 				current = current->next;
 				found++;
 				while (current)
 				{
-					printf(", '%s':'%s'", current->key, current->value);
+					printf(", '%s': '%s'", current->key, current->value);
 					current = current->next;
 					found++;
 				}
