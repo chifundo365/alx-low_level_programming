@@ -8,12 +8,12 @@
 void print_current_array(int *array, int start, int end)
 {
     int i = start;
-    if (end > start)
+    if (end)
     {
         printf("Searching in array: ");
     }
 
-    while ( i < end)
+    while ( i <= end)
     {
         if ( i == start)
         {
@@ -40,7 +40,7 @@ void print_current_array(int *array, int start, int end)
 int binary_search(int *array, size_t size, int value)
 {
     int left = 0;
-    int right = (int)size;
+    int right = (int)size - 1;
     int guess = 0;
     int mid = 0;
 
@@ -50,7 +50,7 @@ int binary_search(int *array, size_t size, int value)
     }
 
     
-    while (left < right)
+    while (left <= right)
     {
         print_current_array(array, left, right);
         mid = (left + right) / 2;
