@@ -7,69 +7,70 @@
 */
 void print_current_array(int *array, int start, int end)
 {
-    int i = start;
-    if (end)
-    {
-        printf("Searching in array: ");
-    }
+	int i = start;
 
-    while ( i <= end)
-    {
-        if ( i == start)
-        {
-            printf("%d", array[i]);
-        }
-        else
-        {
-            printf(", %d", array[i]);
-        }
+	if (end)
+	{
+		printf("Searching in array: ");
+	}
 
-        i++;
-    }
+	while (i <= end)
+	{
+		if (i == start)
+		{
+			printf("%d", array[i]);
+		}
+		else
+		{
+			printf(", %d", array[i]);
+		}
 
-    printf("\n");
+		i++;
+	}
+
+	printf("\n");
 }
 
 /**
-* binary_search - searches for a value in a sorted array of int's
-* @array: pointer to the first int in the array of int's
-* @size: size of the array
-* @value: the value being searched
-* Return: index of the found value else -1
-*/
+ * binary_search - searches for a value in a sorted array of int's
+ * @array: pointer to the first int in the array of int's
+ * @size: size of the array
+ * @value: the value being searched
+ * Return: index of the found value else -1
+ */
 int binary_search(int *array, size_t size, int value)
 {
-    int left = 0;
-    int right = (int)size - 1;
-    int guess = 0;
-    int mid = 0;
+	int left = 0;
+	int right = (int)size - 1;
+	int guess = 0;
+	int mid = 0;
 
-    if (!array)
-    {
-        return (-1);
-    }
+	if (!array)
+	{
+		return (-1);
+	}
 
-    
-    while (left <= right)
-    {
-        print_current_array(array, left, right);
-        mid = (left + right) / 2;
-        guess = array[mid];
 
-        if (value == guess)
-        {
-            return (mid);
+	while (left <= right)
+	{
+		print_current_array(array, left, right);
+		mid = (left + right) / 2;
+		guess = array[mid];
 
-        }
-        if (guess > value)
-        {
-            right = mid - 1;
-        }
-        else
-        {
-            left = mid + 1;
-        }
-    }
+		if (value == guess)
+		{
+			return (mid);
 
-    return (-1);
+		}
+		if (guess > value)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+
+	return (-1);
 }
