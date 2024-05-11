@@ -22,36 +22,34 @@ int jump_search(int *array, size_t size, int value)
 {
 	int index = 0;
 	int j_step = (int)sqrt((float)size);
+	int step = j_step;
 	int i = 0;
 
 	while (index < (int)size)
 	{
 		print_checked(array, index);
 
-		if (array[index] == value)
-			return (index);
-
-		if (array[j_step] >= value)
+		if ((j_step >= ((int)size - 1) + step) || (array[j_step] >= value))
 		{
 			printf("Value found between indexes [%d] and [%d]\n",
 					index, j_step);
 
 			i = index;
 
-			while (i <= (j_step))
+			while (i <= (j_step) && (i < (int)size))
 			{
 				print_checked(array, i);
 				if  (array[i] == value)
 					return (i);
 
-				if (i == j_step)
-					return (-1);
 				i++;
 			}
+
+			return (-1);
 		}
 
 		index = j_step;
-		j_step += j_step;
+		j_step += step;
 	}
 
 	return (-1);
